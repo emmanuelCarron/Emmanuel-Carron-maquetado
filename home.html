@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel-Carron-maquetado</title>
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Pestañas -->
+        <div class="row alto-pestagna">
+            <div class="col-sm-4 scaled">
+                <img src="images/banners-14.jpg" alt="Imagen no disponible">
+            </div>
+            <div class="col-sm-4 scaled">
+                <img src="images/banners-13.jpg" alt="Imagen no disponible">
+            </div>
+            <div class="col-sm-4 scaled">
+                <img src="images/banners-12.jpg" alt="Imagen no disponible">
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Oferta -->
+        <div class="row justify-content-center">
+            <div class="col-4 oferta text-center">
+                <h6>CONSTRUCCIÓN EN SECO HASTA 50% OFF</h6>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Selección de productos -->
+        <div id="productos">
+            <div class="row">
+                <div v-for='producto of productos' class="col-3" >
+                    <div class="card card-height">
+                        <img class="scaled" :src="producto.imagen" alt="Imagen no disponible">
+                        <div class="text-center">
+                            <h5>{{producto.nombre}}</h5>
+                            <p>{{producto.detalle}}</p>
+                            <p>{{producto.dimensiones}}</p>
+                            <h5>${{producto.precio * producto.cant}} + IVA</h5>
+                            <p class="precio-comentado">${{producto.precio * producto.cant * 1.21}} (IVA incluído)</p>
+                        </div>
+                        
+                        <div class="row justify-content-center" style="padding: 5px;">
+                            <p>Cant.</p>
+                            <input v-model.number="producto.cant" class="input-width" type="number" min="0" step="1" value= "0">
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                            <button type="button" class="btn btn-danger">Agregar al presupuesto</button>
+                        </div>
+
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="home.js"></script>
+</html>
