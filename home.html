@@ -42,7 +42,10 @@
         <div id="productos">
             <div class="row">
                 <div v-for='producto of productos' class="col-3" >
-                    <div class="card card-height">
+                    <div class="card card-height"
+                        @mouseover="producto.hovered = true"
+                        @mouseleave="producto.hovered = false">
+
                         <img class="scaled" :src="producto.imagen" alt="Imagen no disponible">
                         <div class="text-center">
                             <h5>{{producto.nombre}}</h5>
@@ -52,15 +55,18 @@
                             <p class="precio-comentado">${{producto.precio * producto.cant * 1.21}} (IVA incluído)</p>
                         </div>
                         
-                        <div class="row justify-content-center" style="padding: 5px;">
-                            <p>Cant.</p>
-                            <input v-model.number="producto.cant" class="input-width" type="number" min="0" step="1" value= "0">
-                        </div>
-                        
-                        <div class="row justify-content-center">
-                            <button type="button" class="btn btn-danger">Agregar al presupuesto</button>
-                        </div>
+                        <div v-if="producto.hovered">
 
+                            <div class="row justify-content-center" style="padding: 5px;">
+                                <p>Cant.</p>
+                                <input v-model.number="producto.cant" class="input-width" type="number" min="0" step="1" value= "0">
+                            </div>
+                            
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-danger">Agregar al presupuesto</button>
+                            </div>
+                            
+                        </div>
                     
                     </div>
                 </div>
